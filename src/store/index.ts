@@ -8,7 +8,7 @@ interface Pokemon {
 interface CounterSlice {
   number: number;
   increaseCounterNumber: () => void;
-  decreaseCounterNumber: () => void;
+  decreaseCounterNumber: (num: number) => void;
   logNumber: () => void;
 }
 
@@ -22,7 +22,7 @@ type GlobalState = CounterSlice & PokemonSlice;
 const createCounterSlice: StateCreator<GlobalState, [], [], CounterSlice> = (set, get) => ({
   number: 123,
   increaseCounterNumber: () => set(state => ({ number: state.number + 1 })),
-  decreaseCounterNumber: () => (num: number) => set(state => ({ number: state.number - num })),
+  decreaseCounterNumber: (num: number) => set(state => ({ number: state.number - num })),
   logNumber: () => {
     console.log(` Current number value equals ${get().number}`);
   },
