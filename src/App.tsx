@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NativeBaseProvider } from 'native-base';
+import { StyleSheet, Text, View } from 'react-native';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { useCombinedStore } from './store';
@@ -21,10 +21,12 @@ export function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SafeAreaProvider style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <StatusBar />
-      </SafeAreaProvider>
+      <NativeBaseProvider>
+        <View style={styles.container}>
+          <Text>Open up App.js to start working on your app!</Text>
+          <StatusBar />
+        </View>
+      </NativeBaseProvider>
     </QueryClientProvider>
   );
 }
